@@ -1,2 +1,30 @@
-# terinyan
-テリにゃん — ネコのなわばりパズル（Meowdoku-style cat logic puzzle）
+# テリにゃん
+
+猫のなわばりロジックパズル。Meowdoku 系のルールで、盤面は全部シードから自動生成します。
+
+**リポジトリ:** https://github.com/kkan64973-sys/terinyan
+
+## 遊び方
+
+1. 同じ色のなわばりに猫を 1 匹
+2. 同じ行・同じ列にも 1 匹だけ
+3. 猫同士は斜めも含めて隣り合わない
+4. 置けないマスに ×、確定したら猫
+
+ハートは 3 つ。レベルが上がると 4×4 → 10×10 になり、初期の置き猫が減り、なわばりが細長くなります。
+
+## ソースの場所
+
+パズル本体はここだけ読めば十分です。
+
+```
+src/game/
+  generator.ts   盤面の自動生成
+  solver.ts      解が一意かの判定
+  rules.ts       接触・除外ルール
+  levels.ts      難易度カーブ（200問 + 今日の一問）
+  rng.ts         シード付き乱数
+  storage.ts     進行の保存
+```
+
+UI は `src/components/game/`（`board.tsx` が盤面、`screens.tsx` が画面）。
